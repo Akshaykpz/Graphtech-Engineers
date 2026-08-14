@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Dark Plate Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E0F14" />
+      <stop offset="100%" stop-color="#050507" />
+    </linearGradient>
+    
+    <!-- Metallic Gold Monogram Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF6D5" />
+      <stop offset="25%" stop-color="#FFD700" />
+      <stop offset="65%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#9B7B30" />
+    </linearGradient>
+
+    <!-- Radial Gold Glow -->
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Background Plate with Rounded Corners & Gold Border -->
+  <rect x="16" y="16" width="480" height="480" rx="100" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="12" />
+
+  <!-- Subtle Ambient Glow -->
+  <circle cx="256" cy="256" r="200" fill="url(#glowGrad)" />
+
+  <!-- Outer Architectural Tech Ring -->
+  <circle cx="256" cy="256" r="188" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-dasharray="10 8" opacity="0.4" />
+
+  <!-- BOLD 'GE' ARCHITECTURAL MONOGRAM -->
+  <g transform="translate(256, 256)">
+    <!-- Hexagonal Structural Exoskeleton -->
+    <polygon points="0,-145 125,-72 125,72 0,145 -125,72 -125,-72" fill="none" stroke="url(#goldGrad)" stroke-width="6" opacity="0.4" />
+
+    <!-- Letter 'G' (Left) -->
+    <path d="M -30,-85 C -105,-85 -115,-30 -115,0 C -115,60 -95,85 -25,85 C 15,85 35,65 35,25 L -25,25" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Letter 'E' (Right) -->
+    <path d="M 50,-85 L 115,-85 M 50,-85 L 50,85 L 115,85 M 50,0 L 105,0" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
