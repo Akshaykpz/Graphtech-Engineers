@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import confetti from 'canvas-confetti';
 import { X, Calculator, ArrowRight, CheckCircle2, Building2, Sliders, ShieldCheck } from 'lucide-react';
 
@@ -16,6 +17,18 @@ const QuoteModal = ({ isOpen, onClose }) => {
     phone: '',
     notes: '',
   });
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -60,9 +73,12 @@ const QuoteModal = ({ isOpen, onClose }) => {
     });
   };
 
-  return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
-      <div className="relative w-full max-w-3xl bg-[#0C0D11] border border-[#D4AF37]/40 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+  return createPortal(
+    <div className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
+      <div
+        className="relative w-full max-w-3xl bg-[#0C0D11] border border-[#D4AF37]/40 rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-2xl space-y-5 sm:space-y-6 max-h-[88vh] sm:max-h-[90vh] overflow-y-auto my-auto"
+        style={{ backgroundColor: '#0C0D11' }}
+      >
         
         {/* Close Button */}
         <button
@@ -306,7 +322,8 @@ const QuoteModal = ({ isOpen, onClose }) => {
         )}
 
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

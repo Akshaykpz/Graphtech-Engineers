@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Compass, Ruler, Home, Building, ShieldCheck, Hammer, ArrowRight, X, Check } from 'lucide-react';
 
 const Services = ({ onOpenQuote }) => {
   const [selectedService, setSelectedService] = useState(null);
+
+  // Lock body scroll when service modal is open
+  useEffect(() => {
+    if (selectedService) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedService]);
 
   const services = [
     {
@@ -92,7 +105,7 @@ const Services = ({ onOpenQuote }) => {
   ];
 
   return (
-    <section id="services" className="relative py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
+    <section id="services" className="relative py-14 sm:py-24 md:py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
       
       {/* Glow Effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/5 rounded-full blur-[140px] pointer-events-none" />
@@ -168,14 +181,17 @@ const Services = ({ onOpenQuote }) => {
 
       </div>
 
-      {/* Modal Drawer for Service Details */}
-      {selectedService && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-[#0C0D11] border border-[#D4AF37]/40 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+      {/* Modal Drawer for Service Details via Portal */}
+      {selectedService && createPortal(
+        <div className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
+          <div
+            className="relative w-full max-w-2xl bg-[#0C0D11] border border-[#D4AF37]/40 rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-2xl space-y-5 sm:space-y-6 max-h-[88vh] sm:max-h-[90vh] overflow-y-auto my-auto"
+            style={{ backgroundColor: '#0C0D11' }}
+          >
             
             <button
               onClick={() => setSelectedService(null)}
-              className="absolute top-6 right-6 p-2.5 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+              className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2.5 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -189,11 +205,11 @@ const Services = ({ onOpenQuote }) => {
               </span>
             </div>
 
-            <h3 className="font-display text-3xl font-bold text-white">
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white">
               {selectedService.title}
             </h3>
 
-            <p className="text-sm text-zinc-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
               {selectedService.fullDesc}
             </p>
 
@@ -211,10 +227,10 @@ const Services = ({ onOpenQuote }) => {
               </div>
             </div>
 
-            <div className="pt-4 flex items-center justify-between gap-4">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
               <button
                 onClick={() => setSelectedService(null)}
-                className="px-5 py-2.5 rounded-xl bg-zinc-900 text-zinc-400 hover:text-white text-xs font-semibold uppercase tracking-wider"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-zinc-900 text-zinc-400 hover:text-white text-xs font-semibold uppercase tracking-wider text-center"
               >
                 Close
               </button>
@@ -224,15 +240,16 @@ const Services = ({ onOpenQuote }) => {
                   setSelectedService(null);
                   onOpenQuote();
                 }}
-                className="px-6 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C5A059] text-black text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-[#D4AF37]/20"
+                className="w-full sm:w-auto justify-center px-6 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C5A059] text-black text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-[#D4AF37]/20"
               >
-                <span>Request Quote for {selectedService.title}</span>
+                <span>Request Quote</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </section>

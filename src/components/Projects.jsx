@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { MapPin, Building2, ArrowUpRight, Filter, X, CheckCircle2, Layers } from 'lucide-react';
 
 const Projects = ({ onOpenQuote }) => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
+
+  // Lock body scroll when project modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
 
   const projects = [
     {
@@ -87,7 +100,7 @@ const Projects = ({ onOpenQuote }) => {
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="relative py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
+    <section id="projects" className="relative py-14 sm:py-24 md:py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
       
       {/* Background Glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[140px] pointer-events-none" />
@@ -185,10 +198,13 @@ const Projects = ({ onOpenQuote }) => {
 
       </div>
 
-      {/* Detail Lightbox Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
-          <div className="relative w-full max-w-4xl bg-[#0C0D11] border border-[#D4AF37]/40 rounded-3xl overflow-hidden shadow-2xl space-y-0 max-h-[90vh] overflow-y-auto">
+      {/* Detail Lightbox Modal via Portal */}
+      {selectedProject && createPortal(
+        <div className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
+          <div
+            className="relative w-full max-w-4xl bg-[#0C0D11] border border-[#D4AF37]/40 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl space-y-0 max-h-[88vh] sm:max-h-[90vh] overflow-y-auto my-auto"
+            style={{ backgroundColor: '#0C0D11' }}
+          >
             
             {/* Close Button */}
             <button
@@ -199,54 +215,54 @@ const Projects = ({ onOpenQuote }) => {
             </button>
 
             {/* Header Image */}
-            <div className="relative h-96 w-full bg-zinc-900">
+            <div className="relative h-60 sm:h-96 w-full bg-zinc-900">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.name}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D11] via-black/30 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 space-y-2">
-                <span className="text-xs font-mono font-bold tracking-widest text-[#D4AF37] uppercase px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30">
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 space-y-2">
+                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#D4AF37] uppercase px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30">
                   {selectedProject.type}
                 </span>
-                <h3 className="font-display text-3xl sm:text-4xl font-extrabold text-white">
+                <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-white">
                   {selectedProject.name}
                 </h3>
               </div>
             </div>
 
             {/* Modal Body */}
-            <div className="p-8 sm:p-10 space-y-8">
+            <div className="p-5 sm:p-10 space-y-6 sm:space-y-8">
               
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs">
                 <div>
-                  <span className="text-zinc-500 uppercase tracking-widest block font-mono">Location</span>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-mono text-[10px] sm:text-xs">Location</span>
                   <span className="text-white font-semibold">{selectedProject.location}</span>
                 </div>
                 <div>
-                  <span className="text-zinc-500 uppercase tracking-widest block font-mono">Total Floor Area</span>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-mono text-[10px] sm:text-xs">Total Floor Area</span>
                   <span className="text-white font-semibold">{selectedProject.area}</span>
                 </div>
                 <div>
-                  <span className="text-zinc-500 uppercase tracking-widest block font-mono">Completion Year</span>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-mono text-[10px] sm:text-xs">Completion Year</span>
                   <span className="text-white font-semibold">{selectedProject.year}</span>
                 </div>
                 <div>
-                  <span className="text-zinc-500 uppercase tracking-widest block font-mono">Client</span>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-mono text-[10px] sm:text-xs">Client</span>
                   <span className="text-white font-semibold">{selectedProject.client}</span>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <h4 className="font-display text-lg font-bold text-white">Project Overview</h4>
-                <p className="text-sm text-zinc-300 leading-relaxed">
+                <h4 className="font-display text-base sm:text-lg font-bold text-white">Project Overview</h4>
+                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
                   {selectedProject.description} Designed and engineered by <strong className="text-white">Graphtech Engineers</strong>, this landmark project stands as an exemplar of structural resilience and contemporary architectural elegance.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <h4 className="font-display text-lg font-bold text-[#D4AF37]">Key Engineering Innovations</h4>
+                <h4 className="font-display text-base sm:text-lg font-bold text-[#D4AF37]">Key Engineering Innovations</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {selectedProject.specs.map((spec, i) => (
                     <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900 border border-zinc-800">
@@ -257,8 +273,8 @@ const Projects = ({ onOpenQuote }) => {
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-800 flex items-center justify-between">
-                <span className="text-xs text-zinc-500 font-mono">
+              <div className="pt-6 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span className="text-[11px] sm:text-xs text-zinc-500 font-mono text-center sm:text-left">
                   Graphtech Engineers • Certified Architectural Portfolio
                 </span>
                 <button
@@ -266,7 +282,7 @@ const Projects = ({ onOpenQuote }) => {
                     setSelectedProject(null);
                     onOpenQuote();
                   }}
-                  className="px-6 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C5A059] text-black text-xs font-bold uppercase tracking-wider flex items-center gap-2"
+                  className="w-full sm:w-auto justify-center px-6 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C5A059] text-black text-xs font-bold uppercase tracking-wider flex items-center gap-2"
                 >
                   <span>Build Similar Project</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -276,7 +292,8 @@ const Projects = ({ onOpenQuote }) => {
             </div>
 
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </section>
