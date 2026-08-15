@@ -106,8 +106,8 @@ const Services = ({ onOpenQuote }) => {
               <span>Core Capabilities</span>
             </div>
             
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              COMPREHENSIVE <br />
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
+              COMPREHENSIVE <br className="hidden sm:inline" />
               <span className="text-gold-gradient">ENGINEERING SERVICES</span>
             </h2>
           </div>

@@ -59,8 +59,8 @@ const About = () => {
               <span>Who We Are</span>
             </div>
             
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              ENGINEERING WITH <br />
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              ENGINEERING WITH <br className="hidden sm:inline" />
               <span className="text-gold-gradient">PURPOSE</span>
             </h2>
           </div>

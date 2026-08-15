@@ -47,8 +47,8 @@ const Contact = () => {
             <span>Start Your Journey</span>
           </div>
           
-          <h2 className="font-display text-4xl sm:text-6xl font-extrabold text-white leading-tight">
-            LET'S BUILD <br />
+          <h2 className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+            LET'S BUILD <br className="hidden sm:inline" />
             <span className="text-gold-gradient">SOMETHING GREAT.</span>
           </h2>
 

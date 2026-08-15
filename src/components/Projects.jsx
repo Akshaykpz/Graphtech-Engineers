@@ -101,8 +101,8 @@ const Projects = ({ onOpenQuote }) => {
               <span>Portfolio Showcase</span>
             </div>
             
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              ARCHITECTURAL & <br />
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
+              ARCHITECTURAL & <br className="hidden sm:inline" />
               <span className="text-gold-gradient">ENGINEERING MASTERY</span>
             </h2>
           </div>

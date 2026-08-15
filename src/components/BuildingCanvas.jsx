@@ -261,8 +261,8 @@ const BuildingCanvas = ({ onOpenQuote }) => {
             </span>
           </div>
 
-          <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-            WE BUILD YOUR VISION <br />
+          <h1 className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
+            WE BUILD YOUR VISION <br className="hidden sm:inline" />
             <span className="text-gold-gradient">INTO REALITY.</span>
           </h1>
 

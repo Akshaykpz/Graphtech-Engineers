@@ -69,8 +69,8 @@ const Process = () => {
             <span>Execution Methodology</span>
           </div>
           
-          <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            THE CONSTRUCTION <br />
+          <h2 className="font-display text-2xl xs:text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
+            THE CONSTRUCTION <br className="hidden sm:inline" />
             <span className="text-gold-gradient">PROCESS TIMELINE</span>
           </h2>
 
