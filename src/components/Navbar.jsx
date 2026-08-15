@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Building2, Menu, X, ArrowRight, Compass } from 'lucide-react';
 
 const Navbar = ({ onOpenQuote }) => {
@@ -34,6 +35,18 @@ const Navbar = ({ onOpenQuote }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -140,18 +153,20 @@ const Navbar = ({ onOpenQuote }) => {
         </div>
       </div>
 
-      {/* Right-Side Slide-Over Mobile Sidebar Drawer */}
-      {mobileMenuOpen && (
-        <>
+      {/* Right-Side Slide-Over Mobile Sidebar Drawer via Portal */}
+      {mobileMenuOpen && createPortal(
+        <div className="fixed inset-0 z-[99999] md:hidden">
           {/* Dark Overlay Backdrop */}
           <div
-            className="fixed inset-0 z-40 bg-black/75 backdrop-blur-sm transition-opacity animate-fadeIn md:hidden"
+            className="fixed inset-0 z-[99998] bg-black/80 backdrop-blur-md transition-opacity animate-fadeIn"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          {/* Right Slide Panel Drawer */}
-          <div className="fixed inset-y-0 right-0 z-50 w-80 max-w-[85vw] bg-[#0C0D11] border-l border-[#D4AF37]/30 shadow-2xl p-6 flex flex-col justify-between md:hidden animate-slideLeft">
-            
+          {/* Right Slide Panel Drawer with guaranteed solid background */}
+          <div
+            className="fixed inset-y-0 right-0 z-[99999] w-[85vw] max-w-xs sm:w-80 bg-[#0C0D11] border-l border-[#D4AF37]/40 shadow-2xl p-6 flex flex-col justify-between animate-slideLeft overflow-y-auto"
+            style={{ backgroundColor: '#0C0D11' }}
+          >
             {/* Drawer Header */}
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-zinc-800/80 pb-4">
@@ -218,7 +233,8 @@ const Navbar = ({ onOpenQuote }) => {
             </div>
 
           </div>
-        </>
+        </div>,
+        document.body
       )}
     </header>
   );
