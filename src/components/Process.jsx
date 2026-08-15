@@ -56,12 +56,12 @@ const Process = () => {
   ];
 
   return (
-    <section id="process" className="relative py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
+    <section id="process" className="relative py-8 sm:py-20 md:py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
       
       {/* Background Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-16">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">

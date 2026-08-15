@@ -100,12 +100,12 @@ const Projects = ({ onOpenQuote }) => {
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="relative py-14 sm:py-24 md:py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
+    <section id="projects" className="relative py-8 sm:py-20 md:py-28 bg-[#070709] border-t border-white/5 overflow-hidden">
       
       {/* Background Glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-14">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">

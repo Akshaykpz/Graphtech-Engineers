@@ -43,14 +43,14 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="relative py-28 bg-[#070709] overflow-hidden">
+    <section id="about" className="relative py-8 sm:py-20 md:py-28 bg-[#070709] overflow-hidden">
       
       {/* Background Architectural Grid & Accents */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-16 lg:space-y-20">
         
         {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">

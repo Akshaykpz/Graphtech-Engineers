@@ -7,12 +7,12 @@ const Footer = ({ onOpenQuote }) => {
   };
 
   return (
-    <footer className="relative bg-[#050507] border-t border-white/10 text-zinc-400 overflow-hidden pt-20 pb-12">
+    <footer className="relative bg-[#050507] border-t border-white/10 text-zinc-400 overflow-hidden pt-8 sm:pt-16 pb-8 sm:pb-12">
       
       {/* Background Architectural Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-16">
         
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
