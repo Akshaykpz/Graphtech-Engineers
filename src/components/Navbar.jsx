@@ -211,8 +211,9 @@ const Navbar = ({ onOpenQuote }) => {
               </button>
 
               <div className="space-y-1.5 text-[11px] text-zinc-400 font-mono text-center">
-                <p>+1 (800) 472-7483</p>
-                <p className="text-zinc-500">inquiry@graphtechengineers.com</p>
+                <p><a href="tel:+919447540811" className="hover:text-[#D4AF37] transition-colors">+91 94475 40811</a></p>
+                <p><a href="mailto:info@graphtech.co.in" className="hover:text-[#D4AF37] transition-colors text-zinc-300">info@graphtech.co.in</a></p>
+                <p><a href="http://www.graphtech.co.in" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">www.graphtech.co.in</a></p>
               </div>
             </div>
 

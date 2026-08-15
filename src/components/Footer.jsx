@@ -99,15 +99,23 @@ const Footer = ({ onOpenQuote }) => {
             <div className="space-y-3 text-xs">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>100 Architectural Tower, Suite 400</span>
+                <span>Kottappally, Vatakara, Kozhikode Dt, Kerala</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>+1 (800) 472-7483</span>
+              <div className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-0.5">
+                  <a href="tel:+919447540811" className="hover:text-[#D4AF37] transition-colors">+91 94475 40811</a>
+                  <a href="tel:+918086872801" className="hover:text-[#D4AF37] transition-colors">+91 80868 72801</a>
+                  <a href="tel:+919072472247" className="hover:text-[#D4AF37] transition-colors">+91 90724 72247</a>
+                </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>inquiry@graphtechengineers.com</span>
+                <a href="mailto:info@graphtech.co.in" className="hover:text-[#D4AF37] transition-colors">info@graphtech.co.in</a>
+              </div>
+              <div className="flex items-center gap-2.5 text-zinc-400 font-mono text-[11px]">
+                <span className="text-[#D4AF37] font-bold">WWW</span>
+                <a href="http://www.graphtech.co.in" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">www.graphtech.co.in</a>
               </div>
             </div>
           </div>

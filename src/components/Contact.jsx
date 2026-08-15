@@ -86,33 +86,42 @@ const Contact = () => {
               </p>
 
               <div className="space-y-4 pt-4 border-t border-zinc-800">
-                <div className="flex items-center gap-4 text-sm text-zinc-300">
-                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#D4AF37]">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 font-mono uppercase block">Direct Line</span>
-                    <span className="font-semibold text-white">+1 (800) 472-7483</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm text-zinc-300">
-                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#D4AF37]">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 font-mono uppercase block">Inquiries</span>
-                    <span className="font-semibold text-white">inquiry@graphtechengineers.com</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm text-zinc-300">
-                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#D4AF37]">
+                <div className="flex items-start gap-4 text-sm text-zinc-300">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#D4AF37] shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] text-zinc-500 font-mono uppercase block">Global Headquarters</span>
-                    <span className="font-semibold text-white">100 Architectural Tower, Suite 400</span>
+                    <span className="text-[10px] text-zinc-500 font-mono uppercase block">Office Location</span>
+                    <span className="font-semibold text-white">Kottappally, Vatakara, Kozhikode Dt, Kerala</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 text-sm text-zinc-300">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#D4AF37] shrink-0">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 font-mono uppercase block">Phone Numbers</span>
+                    <div className="font-semibold text-white flex flex-wrap gap-x-2 gap-y-1">
+                      <a href="tel:+919447540811" className="hover:text-[#D4AF37] transition-colors">+91 94475 40811</a>
+                      <span className="text-zinc-600">•</span>
+                      <a href="tel:+918086872801" className="hover:text-[#D4AF37] transition-colors">80868 72801</a>
+                      <span className="text-zinc-600">•</span>
+                      <a href="tel:+919072472247" className="hover:text-[#D4AF37] transition-colors">90724 72247</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 text-sm text-zinc-300">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#D4AF37] shrink-0">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 font-mono uppercase block">Email & Website</span>
+                    <div className="font-semibold text-white flex flex-col gap-0.5">
+                      <a href="mailto:info@graphtech.co.in" className="hover:text-[#D4AF37] transition-colors">info@graphtech.co.in</a>
+                      <a href="http://www.graphtech.co.in" target="_blank" rel="noopener noreferrer" className="text-xs text-[#D4AF37] hover:underline font-mono">www.graphtech.co.in</a>
+                    </div>
                   </div>
                 </div>
               </div>
